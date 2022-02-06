@@ -126,17 +126,10 @@ contract StakingRewards is
     nonReentrant
     updateReward(msg.sender)
   {
-    if (_lockingTimeStamp[msg.sender] > 0) {
-      _totalSupply = _totalSupply.sub(amount);
-      _balances[msg.sender] = _balances[msg.sender].sub(amount);
-      stakingToken.safeTransfer(msg.sender, amount);
-      emit Withdrawn(msg.sender, amount);
-    } else if (_lockingTimeStamp[msg.sender] <= 0) {
-      _totalSupply = _totalSupply.sub(amount);
-      _balances[msg.sender] = _balances[msg.sender].sub(amount);
-      stakingToken.safeTransfer(msg.sender, amount);
-      emit Withdrawn(msg.sender, amount);
-    }
+    _totalSupply = _totalSupply.sub(amount);
+    _balances[msg.sender] = _balances[msg.sender].sub(amount);
+    stakingToken.safeTransfer(msg.sender, amount);
+    emit Withdrawn(msg.sender, amount);
   }
 
   function getReward() public override updateReward(msg.sender) {
