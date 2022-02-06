@@ -9,106 +9,112 @@ import "@openzeppelin/contracts/utils/math/Math.sol";
 import "./StakingRewards.sol";
 
 contract StakingRewardsFactory is Ownable {
-  using SafeMath for uint256;
+    using SafeMath for uint256;
 
-  address public rewardsToken;
-  uint256 public stakingRewardsGenesis;
+    address public rewardsToken;
+    uint256 public stakingRewardsGenesis;
 
-  address[] public stakingTokens;
+    address[] public stakingTokens;
 
-  struct StakingRewardsInfo {
-    address stakingRewards;
-    uint256 rewardAmount;
-    uint256 duration;
-  }
-
-  mapping(address => StakingRewardsInfo)
-    public stakingRewardsInfoByStakingToken;
-
-  constructor(address _rewardsToken, uint256 _stakingRewardsGenesis)
-    Ownable()
-  {
-    require(_stakingRewardsGenesis >= block.timestamp, 'StakingRewardsFactory::constructor: genesis too soon');
-    
-    rewardsToken = _rewardsToken;
-    stakingRewardsGenesis = _stakingRewardsGenesis;
-  }
-
-  function deploy(
-    address stakingToken,
-    uint256 rewardAmount,
-    uint256 rewardsDuration
-  ) public onlyOwner {
-    StakingRewardsInfo storage info = stakingRewardsInfoByStakingToken[
-      stakingToken
-    ];
-    require(
-      info.stakingRewards == address(0),
-      "StakingRewardsFactory::deploy: already deployed"
-    );
-
-    info.stakingRewards = address(
-      new StakingRewards(address(this), rewardsToken, stakingToken)
-    );
-    info.rewardAmount = rewardAmount;
-    info.duration = rewardsDuration;
-    stakingTokens.push(stakingToken);
-  }
-
-  function update(
-    address stakingToken,
-    uint256 rewardAmount,
-    uint256 rewardsDuration
-  ) public onlyOwner {
-    StakingRewardsInfo storage info = stakingRewardsInfoByStakingToken[
-      stakingToken
-    ];
-    require(
-      info.stakingRewards != address(0),
-      "StakingRewardsFactory::update: not deployed"
-    );
-
-    info.rewardAmount = rewardAmount;
-    info.duration = rewardsDuration;
-  }
-
-  function claimRewardAmounts() public onlyOwner {
-    require(
-      stakingTokens.length > 0,
-      "StakingRewardsFactory::claimRewardAmounts: called before any deploys"
-    );
-    for (uint256 i = 0; i < stakingTokens.length; i++) {
-      claimRewardAmount(stakingTokens[i]);
+    struct StakingRewardsInfo {
+        address stakingRewards;
+        uint256 rewardAmount;
+        uint256 duration;
     }
-  }
 
-  function claimRewardAmount(address stakingToken) public onlyOwner {
-    StakingRewardsInfo storage info = stakingRewardsInfoByStakingToken[
-      stakingToken
-    ];
-    require(
-      info.stakingRewards != address(0),
-      "StakingRewardsFactory::claimRewardAmount: not deployed"
-    );
+    mapping(address => StakingRewardsInfo)
+        public stakingRewardsInfoByStakingToken;
 
-    if (info.rewardAmount > 0 && info.duration > 0) {
-      uint256 rewardAmount = info.rewardAmount;
-      uint256 duration = info.duration;
-      info.rewardAmount = 0;
-      info.duration = 0;
+    constructor(address _rewardsToken, uint256 _stakingRewardsGenesis)
+        Ownable()
+    {
+        require(
+            _stakingRewardsGenesis >= block.timestamp,
+            "StakingRewardsFactory::constructor: genesis too soon"
+        );
 
-      require(
-        IERC20(rewardsToken).transfer(info.stakingRewards, rewardAmount),
-        "StakingRewardsFactory::claimRewardAmount: transfer failed"
-      );
-      StakingRewards(info.stakingRewards).claimRewardAmount(
-        rewardAmount,
-        duration
-      );
+        rewardsToken = _rewardsToken;
+        stakingRewardsGenesis = _stakingRewardsGenesis;
     }
-  }
 
-  function pullExtraTokens(address token, uint256 amount) external onlyOwner {
-    IERC20(token).transfer(msg.sender, amount);
-  }
+    function deploy(
+        address stakingToken,
+        uint256 rewardAmount,
+        uint256 rewardsDuration
+    ) public onlyOwner {
+        StakingRewardsInfo storage info = stakingRewardsInfoByStakingToken[
+            stakingToken
+        ];
+        require(
+            info.stakingRewards == address(0),
+            "StakingRewardsFactory::deploy: already deployed"
+        );
+
+        info.stakingRewards = address(
+            new StakingRewards(address(this), rewardsToken, stakingToken)
+        );
+        info.rewardAmount = rewardAmount;
+        info.duration = rewardsDuration;
+        stakingTokens.push(stakingToken);
+    }
+
+    function update(
+        address stakingToken,
+        uint256 rewardAmount,
+        uint256 rewardsDuration
+    ) public onlyOwner {
+        StakingRewardsInfo storage info = stakingRewardsInfoByStakingToken[
+            stakingToken
+        ];
+        require(
+            info.stakingRewards != address(0),
+            "StakingRewardsFactory::update: not deployed"
+        );
+
+        info.rewardAmount = rewardAmount;
+        info.duration = rewardsDuration;
+    }
+
+    function claimRewardAmounts() public onlyOwner {
+        require(
+            stakingTokens.length > 0,
+            "StakingRewardsFactory::claimRewardAmounts: called before any deploys"
+        );
+        for (uint256 i = 0; i < stakingTokens.length; i++) {
+            claimRewardAmount(stakingTokens[i]);
+        }
+    }
+
+    function claimRewardAmount(address stakingToken) public onlyOwner {
+        StakingRewardsInfo storage info = stakingRewardsInfoByStakingToken[
+            stakingToken
+        ];
+        require(
+            info.stakingRewards != address(0),
+            "StakingRewardsFactory::claimRewardAmount: not deployed"
+        );
+
+        if (info.rewardAmount > 0 && info.duration > 0) {
+            uint256 rewardAmount = info.rewardAmount;
+            uint256 duration = info.duration;
+            info.rewardAmount = 0;
+            info.duration = 0;
+
+            require(
+                IERC20(rewardsToken).transfer(
+                    info.stakingRewards,
+                    rewardAmount
+                ),
+                "StakingRewardsFactory::claimRewardAmount: transfer failed"
+            );
+            StakingRewards(info.stakingRewards).claimRewardAmount(
+                rewardAmount,
+                duration
+            );
+        }
+    }
+
+    function pullExtraTokens(address token, uint256 amount) external onlyOwner {
+        IERC20(token).transfer(msg.sender, amount);
+    }
 }
