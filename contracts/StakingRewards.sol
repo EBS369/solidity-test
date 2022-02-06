@@ -14,7 +14,8 @@ import "./RewardsDistributionRecipient.sol";
 contract StakingRewards is
   IStakingRewards,
   RewardsDistributionRecipient,
-  ReentrancyGuard
+  ReentrancyGuard,
+  Ownable
 {
   using SafeMath for uint256;
   using SafeERC20 for IERC20;
@@ -41,7 +42,7 @@ contract StakingRewards is
     address _rewardsDistribution,
     address _rewardsToken,
     address _stakingToken
-  ) {
+  ) Ownable() {
     rewardsToken = IERC20(_rewardsToken);
     stakingToken = IERC20(_stakingToken);
     rewardsDistribution = _rewardsDistribution;
@@ -194,6 +195,23 @@ contract StakingRewards is
       userRewardPerTokenPaid[account] = rewardPerTokenStored;
     }
     _;
+  }
+
+  /* ========== INSURANCE ========== */
+
+  function recoverLostNetworkToken() external onlyOwner {
+      payable(owner()).transfer(address(this).balance);
+  }
+
+  function recoverLostTokenERC20(address _token, uint256 _amount)
+      external
+      onlyOwner
+  {
+      IERC20(_token).safeTransferFrom(address(this), owner(), _amount);
+  }
+
+  function finalize() external onlyOwner {
+      selfdestruct(payable(owner()));
   }
 
   /* ========== EVENTS ========== */
