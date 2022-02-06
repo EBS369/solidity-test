@@ -96,6 +96,7 @@ contract StakingRewards is
   function stake(uint256 amount)
     external
     override
+    nonReentrant
     updateReward(msg.sender)
   {
     require(_lockingTimeStamp[msg.sender] <= 0);
@@ -110,7 +111,7 @@ contract StakingRewards is
     uint256 amount,
     address useraddress,
     uint256 lockingPeriod
-  ) external updateReward(useraddress) {
+  ) external nonReentrant updateReward(useraddress) {
     require(_balances[useraddress] <= 0, "Already staked by user");
     _totalSupply = _totalSupply.add(amount);
     _balances[useraddress] = _balances[useraddress].add(amount);
