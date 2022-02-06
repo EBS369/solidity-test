@@ -38,7 +38,7 @@ contract StakingRewardsFactory is Ownable {
     address stakingToken,
     uint256 rewardAmount,
     uint256 rewardsDuration
-  ) public  {
+  ) public onlyOwner {
     StakingRewardsInfo storage info = stakingRewardsInfoByStakingToken[
       stakingToken
     ];
