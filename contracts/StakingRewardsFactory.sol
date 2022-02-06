@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "@openzeppelin/contracts/utils/math/Math.sol";
 
 import "./StakingRewards.sol";
 
 contract StakingRewardsFactory is Ownable {
+    using SafeERC20 for IERC20;
     using SafeMath for uint256;
 
     address public rewardsToken;
@@ -115,6 +115,6 @@ contract StakingRewardsFactory is Ownable {
     }
 
     function pullExtraTokens(address token, uint256 amount) external onlyOwner {
-        IERC20(token).transfer(msg.sender, amount);
+        IERC20(token).safeTransfer(msg.sender, amount);
     }
 }
