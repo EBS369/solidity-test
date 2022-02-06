@@ -1,6 +1,10 @@
 ## Live (AVAX Fuji Testnet)
 
+### Yield Farm
 https://testnet.snowtrace.io/address/0x1c9163e0b500cf21922306fe62460599848a6302
+
+### LP ($AVAX-$NEW)
+https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 
 ## Enhancements
 
