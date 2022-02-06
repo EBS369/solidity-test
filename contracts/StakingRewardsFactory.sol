@@ -19,7 +19,7 @@ contract StakingRewardsFactory is Ownable {
     struct StakingRewardsInfo {
         address stakingRewards;
         uint256 rewardAmount;
-        uint256 duration; // Epoch
+        uint256 duration;
     }
 
     mapping(address => StakingRewardsInfo)
