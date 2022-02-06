@@ -50,16 +50,11 @@ contract StakingRewards is
 
     /* ========== VIEWS ========== */
 
-    function totalSupply() external view override returns (uint256) {
+    function totalSupply() public view override returns (uint256) {
         return _totalSupply;
     }
 
-    function balanceOf(address account)
-        external
-        view
-        override
-        returns (uint256)
-    {
+    function balanceOf(address account) public view override returns (uint256) {
         return _balances[account];
     }
 
@@ -89,12 +84,12 @@ contract StakingRewards is
                 .add(rewards[account]);
     }
 
-    function getRewardForDuration() external view override returns (uint256) {
+    function getRewardForDuration() public view override returns (uint256) {
         return rewardDuration;
     }
 
     function viewLockingTimeStamp(address account)
-        external
+        public
         view
         override
         returns (uint256)
@@ -105,7 +100,7 @@ contract StakingRewards is
     /* ========== MUTATIVE FUNCTIONS ========== */
 
     function stake(uint256 amount)
-        external
+        public
         override
         nonReentrant
         updateReward(msg.sender)
@@ -119,7 +114,7 @@ contract StakingRewards is
     }
 
     function stakeTransferWithBalance(uint256 amount, address useraddress)
-        external
+        public
         override
         nonReentrant
         updateReward(useraddress)
@@ -154,7 +149,7 @@ contract StakingRewards is
         }
     }
 
-    function quit() external override {
+    function quit() public override {
         withdraw(_balances[msg.sender]);
         getReward();
     }
