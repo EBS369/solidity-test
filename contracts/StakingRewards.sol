@@ -24,6 +24,7 @@ contract StakingRewards is
   IERC20 public stakingToken;
   uint256 public periodFinish = 0;
   uint256 public rewardRate = 0;
+  uint256 public rewardDuration = 7 days;
   uint256 public lastUpdateTime;
   uint256 public rewardPerTokenStored;
 
@@ -80,6 +81,10 @@ contract StakingRewards is
         .mul(rewardPerToken().sub(userRewardPerTokenPaid[account]))
         .div(1e24)
         .add(rewards[account]);
+  }
+
+  function getRewardForDuration() public view override returns (uint256) {
+    return rewardDuration;
   }
 
   function viewLockingTimeStamp(address account) public view override returns (uint256) {
@@ -149,33 +154,33 @@ contract StakingRewards is
 
   /* ========== RESTRICTED FUNCTIONS ========== */
 
-  function claimRewardAmount(uint256 reward, uint256 rewardsDuration)
+  function claimRewardAmount(uint256 reward, uint256 duration)
     external
     override
     onlyRewardsDistribution
     updateReward(address(0))
   {
     require(
-      block.timestamp.add(rewardsDuration) >= periodFinish,
+      block.timestamp.add(duration) >= periodFinish,
       "Cannot reduce existing period"
     );
 
     if (block.timestamp >= periodFinish) {
-      rewardRate = reward.div(rewardsDuration);
+      rewardRate = reward.div(duration);
     } else {
       uint256 remaining = periodFinish.sub(block.timestamp);
       uint256 leftover = remaining.mul(rewardRate);
-      rewardRate = reward.add(leftover).div(rewardsDuration);
+      rewardRate = reward.add(leftover).div(duration);
     }
 
     uint256 balance = rewardsToken.balanceOf(address(this));
     require(
-      rewardRate <= balance.div(rewardsDuration),
+      rewardRate <= balance.div(duration),
       "Provided reward too high"
     );
 
     lastUpdateTime = block.timestamp;
-    periodFinish = block.timestamp.add(rewardsDuration);
+    periodFinish = block.timestamp.add(duration);
     emit RewardAdded(reward, periodFinish);
   }
 
