@@ -83,11 +83,11 @@ contract StakingRewards is
         .add(rewards[account]);
   }
 
-  function getRewardForDuration() public view override returns (uint256) {
+  function getRewardForDuration() external view override returns (uint256) {
     return rewardDuration;
   }
 
-  function viewLockingTimeStamp(address account) public view override returns (uint256) {
+  function viewLockingTimeStamp(address account) external view override returns (uint256) {
     return _lockingTimeStamp[account];
   }
 
