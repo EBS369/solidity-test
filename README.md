@@ -10,7 +10,7 @@
 8. finalize() method (debug only)
 9. Use Ownable
 10. Use OpenZeppelin library for factory
-11. Array for loop is gas expensive, consider alternatives
+11. Array for loop is gas expensive, consider alternatives (EnumerableSet)
 
 ## Critical
 
