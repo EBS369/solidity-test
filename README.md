@@ -10,3 +10,4 @@
 1. Should implement all functions from interface when inheriting
 2. Reentrancy protection on state modifying functions
 3. Should not allow user to set locking timestamp manually
+4. Wrong viewLockingTimeStamp() signature, should include address parameter since lookup source is a map[address]uint256
