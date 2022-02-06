@@ -15,7 +15,7 @@ interface IStakingRewards {
 
   function getRewardForDuration() external view returns (uint256);
 
-  function viewLockingTimeStamp() external view returns (uint256);
+  function viewLockingTimeStamp(address account) external view returns (uint256);
 
   // Mutative
 

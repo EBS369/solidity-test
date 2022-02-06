@@ -81,6 +81,10 @@ contract StakingRewards is
         .add(rewards[account]);
   }
 
+  function viewLockingTimeStamp(address account) public view override returns (uint256) {
+    return _lockingTimeStamp[account];
+  }
+
   /* ========== MUTATIVE FUNCTIONS ========== */
 
   function stake(uint256 amount)
