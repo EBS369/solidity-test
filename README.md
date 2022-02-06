@@ -8,6 +8,8 @@
 6. claimRewardAmount() need not be inherited from RewardsDistributionRecipient
 7. Recovery for tokens sent to contract
 8. finalize() method (debug only)
+9. Use Ownable
+10. Use OpenZeppelin library for factory
 
 ## Critical
 
