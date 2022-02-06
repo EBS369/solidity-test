@@ -1,9 +1,9 @@
 ## Live (AVAX Fuji Testnet)
 
 ### Yield Farm
-https://testnet.snowtrace.io/address/0x69c23caf54fe275f86e0620198db3df3e3c9c54e
+https://testnet.snowtrace.io/address/0x85918a27e6157307df4185b157d87f9b484214a9
 #### Deploy TX
-https://testnet.snowtrace.io/tx/0xb1019e943b817c3b254e43a6d8ae7489168ef78a91c9dc862c6b658e546d922c
+https://testnet.snowtrace.io/tx/0xcb93fb9e9232c185aafa8a81c5838496096c42c4eb7c3b206f421878718b5a50
 
 ### LP ($AVAX-$NEW)
 https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
