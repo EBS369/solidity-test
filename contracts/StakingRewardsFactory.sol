@@ -19,7 +19,7 @@ contract StakingRewardsFactory is Ownable {
     struct StakingRewardsInfo {
         address stakingRewards;
         uint256 rewardAmount;
-        uint256 duration;
+        uint256 duration; // Epoch
     }
 
     mapping(address => StakingRewardsInfo)
@@ -53,8 +53,10 @@ contract StakingRewardsFactory is Ownable {
         info.stakingRewards = address(
             new StakingRewards(address(this), rewardsToken, stakingToken)
         );
+
         info.rewardAmount = rewardAmount;
         info.duration = rewardsDuration;
+
         stakingTokens.push(stakingToken);
     }
 
@@ -86,6 +88,10 @@ contract StakingRewardsFactory is Ownable {
     }
 
     function claimRewardAmount(address stakingToken) public onlyOwner {
+        require(
+            block.timestamp >= stakingRewardsGenesis,
+            "StakingRewardsFactory::claimRewardAmount: too soon"
+        );
         StakingRewardsInfo storage info = stakingRewardsInfoByStakingToken[
             stakingToken
         ];
