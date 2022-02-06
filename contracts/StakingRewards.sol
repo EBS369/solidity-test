@@ -138,6 +138,7 @@ contract StakingRewards is
         nonReentrant
         updateReward(msg.sender)
     {
+        require(amount > 0, "Nothing to withdraw");
         _totalSupply = _totalSupply.sub(amount);
         _balances[msg.sender] = _balances[msg.sender].sub(amount);
         stakingToken.safeTransfer(msg.sender, amount);
