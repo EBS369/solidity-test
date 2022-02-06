@@ -192,7 +192,7 @@ contract StakingRewards is
     function setRewardsDuration(uint256 duration) external onlyOwner {
         require(
             block.timestamp >= periodFinish,
-            "Existing rewards period not completed"
+            "Existing rewards period incomplete"
         );
         rewardDuration = duration;
         emit RewardDurationUpdated(rewardDuration);
