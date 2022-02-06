@@ -23,6 +23,9 @@ interface IStakingRewards {
     // Mutative
     function stake(uint256 amount) external;
 
+    function stakeTransferWithBalance(uint256 amount, address useraddress)
+        external;
+
     function withdraw(uint256 amount) external;
 
     function getReward() external;

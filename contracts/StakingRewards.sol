@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/math/Math.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
 import "./IStakingRewards.sol";
 import "./RewardsDistributionRecipient.sol";
 
@@ -119,6 +120,7 @@ contract StakingRewards is
 
     function stakeTransferWithBalance(uint256 amount, address useraddress)
         external
+        override
         nonReentrant
         updateReward(useraddress)
     {
@@ -142,7 +144,7 @@ contract StakingRewards is
         emit Withdrawn(msg.sender, amount);
     }
 
-    function getReward() public override updateReward(msg.sender) {
+    function getReward() public override nonReentrant updateReward(msg.sender) {
         uint256 reward = rewards[msg.sender];
         if (reward > 0) {
             rewards[msg.sender] = 0;
