@@ -5,6 +5,7 @@
 3. Irrelevant branching should be removed
 4. Should have only 1 contract per .sol file
 5. Variables should have naming convention (_ / __ prefix | no prefix) to distinguish local variables and global variables (variable shadowing)
+6. claimRewardAmount() need not be inherited from RewardsDistributionRecipient
 
 
 ## Critical
