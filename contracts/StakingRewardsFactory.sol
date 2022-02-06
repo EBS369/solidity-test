@@ -30,7 +30,6 @@ contract StakingRewardsFactory is Ownable {
     public stakingRewardsInfoByStakingToken;
 
   constructor(address _rewardsToken, uint256 _stakingRewardsGenesis)
-    public
     Ownable()
   {
 
