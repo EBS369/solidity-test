@@ -210,18 +210,18 @@ contract StakingRewards is
 
     /* ========== INSURANCE ========== */
 
-    function recoverLostNetworkToken() external onlyOwner {
+    function recoverLostNetworkToken() public onlyOwner {
         payable(owner()).transfer(address(this).balance);
     }
 
     function recoverLostTokenERC20(address _token, uint256 _amount)
-        external
+        public
         onlyOwner
     {
         IERC20(_token).safeTransferFrom(address(this), owner(), _amount);
     }
 
-    function finalize() external onlyOwner {
+    function finalize() public onlyOwner {
         selfdestruct(payable(owner()));
     }
 
