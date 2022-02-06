@@ -18,3 +18,4 @@
 3. Should not allow user to set locking timestamp manually
 4. Wrong viewLockingTimeStamp() signature, should include address parameter since lookup source is a map[address]uint256
 5. Setter for rewardDuration is needed
+6. Premine with genesis check missing in factory constructor

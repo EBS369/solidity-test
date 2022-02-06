@@ -28,7 +28,8 @@ contract StakingRewardsFactory is Ownable {
   constructor(address _rewardsToken, uint256 _stakingRewardsGenesis)
     Ownable()
   {
-
+    require(_stakingRewardsGenesis >= block.timestamp, 'StakingRewardsFactory::constructor: genesis too soon');
+    
     rewardsToken = _rewardsToken;
     stakingRewardsGenesis = _stakingRewardsGenesis;
   }
