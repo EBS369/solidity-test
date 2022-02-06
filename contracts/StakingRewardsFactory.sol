@@ -185,6 +185,19 @@ contract StakingRewards is
     }
     _;
   }
+
+  /* ========== EVENTS ========== */
+
+  event DefaultInitialization();
+  event RewardAdded(uint256 reward, uint256 periodFinish);
+  event Staked(address indexed user, uint256 amount);
+  event Withdrawn(address indexed user, uint256 amount);
+  event RewardPaid(address indexed user, uint256 reward);
+  event Recovered(
+        address indexed tokenAddress,
+        address indexed to,
+        uint256 amount
+  );
 }
 
 contract StakingRewardsFactory is Ownable {
