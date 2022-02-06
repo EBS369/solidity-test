@@ -108,7 +108,7 @@ contract StakingRewardsFactory is Ownable {
     }
   }
 
-  function pullExtraTokens(address token, uint256 amount) external {
+  function pullExtraTokens(address token, uint256 amount) external onlyOwner {
     IERC20(token).transfer(msg.sender, amount);
   }
 }
