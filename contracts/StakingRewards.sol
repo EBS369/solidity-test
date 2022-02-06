@@ -76,7 +76,7 @@ contract StakingRewards is
                 lastTimeRewardApplicable()
                     .sub(lastUpdateTime)
                     .mul(rewardRate)
-                    .mul(1e24)
+                    .mul(1e18)
                     .div(periodFinish)
             );
     }
@@ -85,7 +85,7 @@ contract StakingRewards is
         return
             _balances[account]
                 .mul(rewardPerToken().sub(userRewardPerTokenPaid[account]))
-                .div(1e24)
+                .div(1e18)
                 .add(rewards[account]);
     }
 
