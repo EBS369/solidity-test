@@ -1,6 +1,6 @@
 ## Live (AVAX Fuji Testnet)
 
-- TODO
+https://testnet.snowtrace.io/address/0x1c9163e0b500cf21922306fe62460599848a6302
 
 ## Enhancements
 
