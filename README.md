@@ -14,7 +14,7 @@
 8. finalize() method (debug only)
 9. Use Ownable
 10. Use OpenZeppelin library for factory
-11. --array for loop is gas expensive, consider alternatives (EnumerableSet)-- unnecessary as array is small
+11. ~~array for loop is gas expensive, consider alternatives (EnumerableSet)~~ unnecessary as the array is small
 12. uint256 should not be needed as loop counter, consider uint
 
 ## Critical
