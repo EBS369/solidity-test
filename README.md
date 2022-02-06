@@ -11,6 +11,7 @@
 9. Use Ownable
 10. Use OpenZeppelin library for factory
 11. Array for loop is gas expensive, consider alternatives (EnumerableSet)
+12. uint256 should not be needed as loop counter, consider uint
 
 ## Critical
 
