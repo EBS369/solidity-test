@@ -176,6 +176,18 @@ contract StakingRewards is
     emit RewardAdded(reward, periodFinish);
   }
 
+  function setRewardsDuration(uint256 duration)
+    external
+    onlyOwner
+  {
+    require(
+      block.timestamp >= periodFinish,
+      "Previous rewards period not completed"
+    );
+    rewardDuration = duration;
+    emit RewardDurationUpdated(rewardDuration);
+  }
+
   /* ========== MODIFIERS ========== */
 
   modifier updateReward(address account) {
@@ -209,6 +221,7 @@ contract StakingRewards is
 
   event DefaultInitialization();
   event RewardAdded(uint256 reward, uint256 periodFinish);
+  event RewardDurationUpdated(uint256 duration);
   event Staked(address indexed user, uint256 amount);
   event Withdrawn(address indexed user, uint256 amount);
   event RewardPaid(address indexed user, uint256 reward);
