@@ -109,13 +109,12 @@ contract StakingRewards is
 
   function stakeTransferWithBalance(
     uint256 amount,
-    address useraddress,
-    uint256 lockingPeriod
+    address useraddress
   ) external nonReentrant updateReward(useraddress) {
     require(_balances[useraddress] <= 0, "Already staked by user");
     _totalSupply = _totalSupply.add(amount);
     _balances[useraddress] = _balances[useraddress].add(amount);
-    _lockingTimeStamp[useraddress] = lockingPeriod; // setting user locking ts
+    _lockingTimeStamp[useraddress] = 0;
     stakingToken.safeTransferFrom(msg.sender, address(this), amount);
     emit Staked(useraddress, amount);
   }
