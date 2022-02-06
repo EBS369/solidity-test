@@ -72,7 +72,7 @@ contract StakingRewardsFactory is Ownable {
     info.duration = rewardsDuration;
   }
 
-  function claimRewardAmounts() public {
+  function claimRewardAmounts() public onlyOwner {
     require(
       stakingTokens.length > 0,
       "StakingRewardsFactory::claimRewardAmounts: called before any deploys"
@@ -82,7 +82,7 @@ contract StakingRewardsFactory is Ownable {
     }
   }
 
-  function claimRewardAmount(address stakingToken) public {
+  function claimRewardAmount(address stakingToken) public onlyOwner {
     StakingRewardsInfo storage info = stakingRewardsInfoByStakingToken[
       stakingToken
     ];
