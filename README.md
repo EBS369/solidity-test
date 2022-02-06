@@ -1,3 +1,7 @@
+## Sample Contract (AVAX TestNet)
+
+[Sample Contract](https://testnet.snowtrace.io/address/0x53b8b8da03a2c9068c4ebf9d08b79782afe4a740#code)
+
 ## Enhancements
 
 1. Should tighten function modifiers
