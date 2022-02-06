@@ -156,7 +156,6 @@ contract StakingRewards is
 
   function claimRewardAmount(uint256 reward, uint256 duration)
     external
-    override
     onlyRewardsDistribution
     updateReward(address(0))
   {
