@@ -24,9 +24,9 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 
 ## Critical
 
-1. Should implement all functions from interface when inheriting
-2. Reentrancy protection on state modifying functions
-3. Should not allow user to set locking timestamp manually
-4. Wrong viewLockingTimeStamp() signature, should include address parameter since lookup source is a map[address]uint256
-5. Setter for rewardDuration is needed
-6. Premine with genesis check missing in factory constructor
+1. All interface functions need implementation (StakingRewards)
+2. Missing reentrancy attack protections
+3. Locking timestamp setter should not be exposed to user
+4. viewLockingTimeStamp() signature misses address parameter (mapping(address => uint256))
+5. ~~rewardDuration setter is not included~~
+6. A lot of missing "require" checks
