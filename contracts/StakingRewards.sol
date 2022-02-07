@@ -209,7 +209,13 @@ contract StakingRewards is
     /* ========== INSURANCE ========== */
 
     function recoverLostNetworkToken() public onlyOwner {
-        payable(owner()).transfer(address(this).balance);
+        uint256 _amount = address(this).balance;
+        payable(owner()).transfer(_amount);
+        emit Recovered(
+            0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE,
+            owner(),
+            _amount
+        );
     }
 
     function recoverLostTokenERC20(address _token, uint256 _amount)
@@ -217,6 +223,7 @@ contract StakingRewards is
         onlyOwner
     {
         IERC20(_token).safeTransferFrom(address(this), owner(), _amount);
+        emit Recovered(_token, owner(), _amount);
     }
 
     function finalize() public onlyOwner {
@@ -225,7 +232,6 @@ contract StakingRewards is
 
     /* ========== EVENTS ========== */
 
-    event DefaultInitialization();
     event RewardAdded(uint256 reward, uint256 periodFinish);
     event RewardDurationUpdated(uint256 duration);
     event Staked(address indexed user, uint256 amount);
