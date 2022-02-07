@@ -18,7 +18,7 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 
 ## Enhancements
 
-1. Minimal accessibility function modifiers
+1. Lowest privilege accessibility function modifiers
 2. Emit events vs Gas optimization
 3. Remove irrelevant branching
 4. One contract per Solidity file
