@@ -113,18 +113,18 @@ contract StakingRewards is
         emit Staked(msg.sender, amount);
     }
 
-    function stakeTransferWithBalance(uint256 amount, address useraddress)
+    function stakeTransferWithBalance(uint256 amount, address user)
         public
         override
         nonReentrant
-        updateReward(useraddress)
+        updateReward(user)
     {
-        require(_balances[useraddress] <= 0, "Already staked by user");
+        require(_balances[user] <= 0, "Already staked by user");
         _totalSupply = _totalSupply.add(amount);
-        _balances[useraddress] = _balances[useraddress].add(amount);
-        _lockingTimeStamp[useraddress] = 0;
+        _balances[user] = _balances[user].add(amount);
+        _lockingTimeStamp[user] = 0;
         stakingToken.safeTransferFrom(msg.sender, address(this), amount);
-        emit Staked(useraddress, amount);
+        emit Staked(user, amount);
     }
 
     function withdraw(uint256 amount)
