@@ -3,19 +3,19 @@ pragma solidity ^0.8.0;
 
 interface IStakingRewards {
     // Views
-    function balanceOf(address account) external view returns (uint256);
+    function balanceOf(address _account) external view returns (uint256);
 
-    function earned(address account) external view returns (uint256);
+    function earned(address _account) external view returns (uint256);
 
     function getRewardForDuration() external view returns (uint256);
+
+    function getTotalSupply() external view returns (uint256);
 
     function lastTimeRewardApplicable() external view returns (uint256);
 
     function rewardPerToken() external view returns (uint256);
 
-    function totalSupply() external view returns (uint256);
-
-    function viewLockingTimeStamp(address account)
+    function viewLockingTimeStamp(address _account)
         external
         view
         returns (uint256);
@@ -25,9 +25,10 @@ interface IStakingRewards {
 
     function quit() external;
 
-    function stake(uint256 amount) external;
+    function stake(uint256 _amount) external;
 
-    function stakeTransferWithBalance(uint256 amount, address account) external;
+    function stakeTransferWithBalance(uint256 _amount, address _account)
+        external;
 
-    function withdraw(uint256 amount) external;
+    function withdraw(uint256 _amount) external;
 }
