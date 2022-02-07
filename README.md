@@ -20,7 +20,7 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 3. Remove irrelevant branching
 4. One contract per Solidity file
 5. Global variable vs Local variable naming conventions, to prevent variable shadowing
-6. No need to inherit claimRewardAmount function from RewardsDistributionRecipient
+6. ~~No need to inherit claimRewardAmount function from RewardsDistributionRecipient~~
 7. ~~Contract destruction finalize()~~
 8. Proxy contract for contract upgrade?
 9. Lost token recovery
