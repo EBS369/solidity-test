@@ -72,7 +72,7 @@ contract StakingRewards is
                     .sub(lastUpdateTime)
                     .mul(rewardRate)
                     .mul(1e18)
-                    .div(periodFinish)
+                    .div(_totalSupply)
             );
     }
 
