@@ -27,7 +27,7 @@ interface IStakingRewards {
 
     function stake(uint256 amount) external;
 
-    function stakeTransferWithBalance(uint256 amount, address user) external;
+    function stakeTransferWithBalance(uint256 amount, address account) external;
 
     function withdraw(uint256 amount) external;
 }
