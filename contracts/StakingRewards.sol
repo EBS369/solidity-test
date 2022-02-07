@@ -39,7 +39,6 @@ contract StakingRewards is
     mapping(address => uint256) private _lockingTimeStamp;
 
     /* ========== CONSTRUCTOR ========== */
-
     constructor(
         address _rewardsDistribution,
         address _rewardsToken,
@@ -51,7 +50,6 @@ contract StakingRewards is
     }
 
     /* ========== VIEWS ========== */
-
     function totalSupply() public view override returns (uint256) {
         return _totalSupply;
     }
@@ -100,7 +98,6 @@ contract StakingRewards is
     }
 
     /* ========== MUTATIVE FUNCTIONS ========== */
-
     function stake(uint256 amount)
         public
         override
@@ -157,7 +154,6 @@ contract StakingRewards is
     }
 
     /* ========== RESTRICTED FUNCTIONS ========== */
-
     function claimRewardAmount(uint256 reward, uint256 duration)
         external
         onlyRewardsDistribution
@@ -196,20 +192,6 @@ contract StakingRewards is
         emit RewardDurationUpdated(rewardDuration);
     }
 
-    /* ========== MODIFIERS ========== */
-
-    modifier updateReward(address account) {
-        rewardPerTokenStored = rewardPerToken();
-        lastUpdateTime = lastTimeRewardApplicable();
-        if (account != address(0)) {
-            rewards[account] = earned(account);
-            userRewardPerTokenPaid[account] = rewardPerTokenStored;
-        }
-        _;
-    }
-
-    /* ========== INSURANCE ========== */
-
     function recoverLostNetworkToken() public onlyOwner {
         uint256 _amount = address(this).balance;
         payable(owner()).transfer(_amount);
@@ -232,8 +214,18 @@ contract StakingRewards is
         selfdestruct(payable(owner()));
     }
 
-    /* ========== EVENTS ========== */
+    /* ========== MODIFIERS ========== */
+    modifier updateReward(address account) {
+        rewardPerTokenStored = rewardPerToken();
+        lastUpdateTime = lastTimeRewardApplicable();
+        if (account != address(0)) {
+            rewards[account] = earned(account);
+            userRewardPerTokenPaid[account] = rewardPerTokenStored;
+        }
+        _;
+    }
 
+    /* ========== EVENTS ========== */
     event RewardAdded(uint256 reward, uint256 periodFinish);
     event RewardDurationUpdated(uint256 duration);
     event Staked(address indexed user, uint256 amount);
