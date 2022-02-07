@@ -210,6 +210,14 @@ contract StakingRewards is
         emit Recovered(_token, owner(), _amount);
     }
 
+    function pause() public onlyOwner {
+        _pause();
+    }
+
+    function unpause() public onlyOwner {
+        _unpause();
+    }
+
     function finalize() public onlyOwner {
         selfdestruct(payable(owner()));
     }
