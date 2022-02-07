@@ -1,8 +1,8 @@
 ## Live (AVAX Fuji Testnet)
 
-### Yield Farm
+### Staking Rewards Factory
 https://testnet.snowtrace.io/address/0x85918a27e6157307df4185b157d87f9b484214a9
-#### Deploy TX
+#### Deployment
 https://testnet.snowtrace.io/tx/0xcb93fb9e9232c185aafa8a81c5838496096c42c4eb7c3b206f421878718b5a50
 https://testnet.snowtrace.io/tx/0xa3a579d47ac5ac252f5745c10fbf4ba20a4ed53549226b7485bc3d1bee2a1a6d
 
