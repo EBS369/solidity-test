@@ -40,3 +40,4 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 4. viewLockingTimeStamp() signature misses address parameter (mapping(address => uint256))
 5. ~~rewardDuration setter is not included~~
 6. A lot of missing "require" checks
+7. Timelock was not implemented
