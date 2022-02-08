@@ -129,7 +129,7 @@ contract StakingRewards is
         totalSupply = totalSupply.add(_amount);
         balances[_account] = balances[_account].add(_amount);
         lockingTimeStamp[_account] = lockingPeriod.add(block.timestamp);
-        stakingToken.safeTransferFrom(_account, address(this), _amount);
+        stakingToken.safeTransferFrom(msg.sender, address(this), _amount);
         emit Staked(_account, _amount);
     }
 
@@ -141,7 +141,7 @@ contract StakingRewards is
     {
         require(_amount > 0, "Nothing to withdraw");
         require(
-            block.timestamp >= lockingTimeStamp[_account],
+            block.timestamp >= lockingTimeStamp[msg.sender],
             "Time lock is still in place"
         );
         totalSupply = totalSupply.sub(_amount);
