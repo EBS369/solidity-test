@@ -29,7 +29,7 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 9. Lost token recovery
 10. ~~Avoid for loops on array~~ neglectable in this case
 11. Pause contract
-12. Best not manipulate contract state inside modifier
+12. Do not modify contract state inside modifier
 
 ## Critical
 
