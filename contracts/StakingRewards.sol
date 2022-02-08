@@ -109,10 +109,11 @@ contract StakingRewards is
         nonReentrant
         updateReward(msg.sender)
     {
-        require(lockingTimeStamp[msg.sender] <= 0);
+        require(_amount > 0, "Nothing to stake");
+        // TODO Front-end: Warn locking period reset if stake already exists
         totalSupply = totalSupply.add(_amount);
         balances[msg.sender] = balances[msg.sender].add(_amount);
-        lockingTimeStamp[msg.sender] = 0;
+        lockingTimeStamp[msg.sender] = lockingPeriod;
         stakingToken.safeTransferFrom(msg.sender, address(this), _amount);
         emit Staked(msg.sender, _amount);
     }
@@ -123,10 +124,11 @@ contract StakingRewards is
         nonReentrant
         updateReward(_account)
     {
-        require(balances[_account] <= 0, "Already staked by user");
+        require(_amount > 0, "Nothing to stake");
+        // TODO Front-end: Warn locking period reset if stake already exists
         totalSupply = totalSupply.add(_amount);
         balances[_account] = balances[_account].add(_amount);
-        lockingTimeStamp[_account] = 0;
+        lockingTimeStamp[_account] = lockingPeriod;
         stakingToken.safeTransferFrom(msg.sender, address(this), _amount);
         emit Staked(_account, _amount);
     }
