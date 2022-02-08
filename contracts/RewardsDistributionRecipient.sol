@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 abstract contract RewardsDistributionRecipient is Ownable {
     address public rewardsDistribution;
 
-    function notifyRewardAmount(uint256 _reward) external virtual;
+    function claimRewardAmount(uint256 _reward, uint256 _duration) external virtual;
 
     function setRewardsDistribution(address _rewardsDistribution)
         external

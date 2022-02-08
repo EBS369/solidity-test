@@ -173,6 +173,7 @@ contract StakingRewards is
     /* ========== RESTRICTED FUNCTIONS ========== */
     function claimRewardAmount(uint256 _reward, uint256 _duration)
         external
+        override
         onlyRewardsDistribution
         updateReward(address(0))
     {
@@ -195,8 +196,8 @@ contract StakingRewards is
             "Provided reward too high"
         );
 
-        lastUpdateTime = block.timestamp;
         periodFinish = block.timestamp.add(_duration);
+        lastUpdateTime = block.timestamp;
         emit RewardAdded(_reward, periodFinish);
     }
 
