@@ -201,7 +201,7 @@ contract StakingRewards is
         uint256 _amount = address(this).balance;
         payable(owner()).transfer(_amount);
         emit Recovered(
-            0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE,
+            address(0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE),
             owner(),
             _amount
         );
