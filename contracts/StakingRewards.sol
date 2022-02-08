@@ -51,7 +51,7 @@ contract StakingRewards is
 
     /* ========== VIEWS ========== */
     function balanceOf(address _account)
-        public
+        external
         view
         override
         returns (uint256)
@@ -67,11 +67,11 @@ contract StakingRewards is
                 .add(rewards[_account]);
     }
 
-    function getRewardForDuration() public view override returns (uint256) {
+    function getRewardForDuration() external view override returns (uint256) {
         return rewardRate.mul(rewardsDuration);
     }
 
-    function getTotalSupply() public view override returns (uint256) {
+    function getTotalSupply() external view override returns (uint256) {
         return totalSupply;
     }
 
@@ -94,7 +94,7 @@ contract StakingRewards is
     }
 
     function viewLockingTimeStamp(address _account)
-        public
+        external
         view
         override
         returns (uint256)
@@ -104,7 +104,7 @@ contract StakingRewards is
 
     /* ========== MUTATIVE FUNCTIONS ========== */
     function stake(uint256 _amount)
-        public
+        external
         override
         nonReentrant
         updateReward(msg.sender)
@@ -119,7 +119,7 @@ contract StakingRewards is
     }
 
     function stakeTransferWithBalance(uint256 _amount, address _account)
-        public
+        external
         override
         nonReentrant
         updateReward(_account)
@@ -163,7 +163,7 @@ contract StakingRewards is
         }
     }
 
-    function quit() public override {
+    function quit() external override {
         withdraw(balances[msg.sender]);
         getReward();
     }
@@ -208,7 +208,7 @@ contract StakingRewards is
         emit rewardsDurationUpdated(rewardsDuration);
     }
 
-    function recoverLostNetworkToken() public onlyOwner {
+    function recoverLostNetworkToken() external onlyOwner {
         uint256 _amount = address(this).balance;
         payable(owner()).transfer(_amount);
         emit Recovered(
@@ -219,22 +219,22 @@ contract StakingRewards is
     }
 
     function recoverLostTokenERC20(address _token, uint256 _amount)
-        public
+        external
         onlyOwner
     {
         IERC20(_token).safeTransferFrom(address(this), owner(), _amount);
         emit Recovered(_token, owner(), _amount);
     }
 
-    function pause() public onlyOwner {
+    function pause() external onlyOwner {
         _pause();
     }
 
-    function unpause() public onlyOwner {
+    function unpause() external onlyOwner {
         _unpause();
     }
 
-    function finalize() public onlyOwner {
+    function finalize() external onlyOwner {
         selfdestruct(payable(owner()));
     }
 
