@@ -113,7 +113,7 @@ contract StakingRewards is
         // TODO Front-end: Warn locking period reset if stake already exists
         totalSupply = totalSupply.add(_amount);
         balances[msg.sender] = balances[msg.sender].add(_amount);
-        lockingTimeStamp[msg.sender] = lockingPeriod;
+        lockingTimeStamp[msg.sender] = lockingPeriod.add(block.timestamp);
         stakingToken.safeTransferFrom(msg.sender, address(this), _amount);
         emit Staked(msg.sender, _amount);
     }
@@ -128,7 +128,7 @@ contract StakingRewards is
         // TODO Front-end: Warn locking period reset if stake already exists
         totalSupply = totalSupply.add(_amount);
         balances[_account] = balances[_account].add(_amount);
-        lockingTimeStamp[_account] = lockingPeriod;
+        lockingTimeStamp[_account] = lockingPeriod.add(block.timestamp);
         stakingToken.safeTransferFrom(_account, address(this), _amount);
         emit Staked(_account, _amount);
     }
@@ -140,6 +140,10 @@ contract StakingRewards is
         updateReward(msg.sender)
     {
         require(_amount > 0, "Nothing to withdraw");
+        require(
+            block.timestamp >= lockingTimeStamp[_account],
+            "Time lock is still in place"
+        );
         totalSupply = totalSupply.sub(_amount);
         balances[msg.sender] = balances[msg.sender].sub(_amount);
         stakingToken.safeTransfer(msg.sender, _amount);
