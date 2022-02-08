@@ -129,7 +129,7 @@ contract StakingRewards is
         totalSupply = totalSupply.add(_amount);
         balances[_account] = balances[_account].add(_amount);
         lockingTimeStamp[_account] = lockingPeriod;
-        stakingToken.safeTransferFrom(msg.sender, address(this), _amount);
+        stakingToken.safeTransferFrom(_account, address(this), _amount);
         emit Staked(_account, _amount);
     }
 
