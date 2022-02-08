@@ -6,14 +6,19 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract RewardsDistributionRecipient is Ownable {
     address public rewardsDistribution;
 
-    function notifyRewardAmount(uint256 _reward) external {}
+    function notifyRewardAmount(uint256 _reward) external;
 
-    function setRewardsDistribution(address _rewardsDistribution) external {}
+    function setRewardsDistribution(address _rewardsDistribution)
+        external
+        onlyOwner
+    {
+        rewardsDistribution = _rewardsDistribution;
+    }
 
     modifier onlyRewardsDistribution() {
         require(
             msg.sender == rewardsDistribution,
-            "Caller is not RewardsDistribution"
+            "Caller is not RewardsDistribution contract"
         );
         _;
     }
