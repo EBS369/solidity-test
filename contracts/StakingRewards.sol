@@ -125,8 +125,7 @@ contract StakingRewards is
         updateReward(_account)
     {
         require(_amount > 0, "Nothing to stake");
-        // Revert if stake already exists
-        // Intentional, prevents malicious time lock attacks
+        // Intentionally revert if stake already exists (lockingTimeStamp reset attack?)
         require(
             block.timestamp >= lockingTimeStamp[msg.sender],
             "Time lock is still in place"
@@ -134,7 +133,6 @@ contract StakingRewards is
         totalSupply = totalSupply.add(_amount);
         balances[_account] = balances[_account].add(_amount);
         lockingTimeStamp[_account] = lockingPeriod.add(block.timestamp);
-        // msg.sender funds the staking
         stakingToken.safeTransferFrom(msg.sender, address(this), _amount);
         emit Staked(_account, _amount);
     }
