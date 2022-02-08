@@ -234,10 +234,6 @@ contract StakingRewards is
         _unpause();
     }
 
-    function finalize() external onlyOwner {
-        selfdestruct(payable(owner()));
-    }
-
     /* ========== MODIFIERS ========== */
     modifier updateReward(address _account) {
         rewardPerTokenStored = rewardPerToken();
