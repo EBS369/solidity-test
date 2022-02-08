@@ -125,7 +125,12 @@ contract StakingRewards is
         updateReward(_account)
     {
         require(_amount > 0, "Nothing to stake");
-        // TODO Front-end: Warn locking period reset if stake already exists
+        // Revert if stake already exists
+        // Intentional, prevents malicious time lock attacks
+        require(
+            block.timestamp >= lockingTimeStamp[msg.sender],
+            "Time lock is still in place"
+        );
         totalSupply = totalSupply.add(_amount);
         balances[_account] = balances[_account].add(_amount);
         lockingTimeStamp[_account] = lockingPeriod.add(block.timestamp);
