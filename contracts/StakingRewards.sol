@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
+//import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -15,7 +15,6 @@ import "./RewardsDistributionRecipient.sol";
 contract StakingRewards is
     IStakingRewards,
     RewardsDistributionRecipient,
-    Ownable,
     Pausable,
     ReentrancyGuard
 {
@@ -26,8 +25,9 @@ contract StakingRewards is
     IERC20 public rewardsToken;
     IERC20 public stakingToken;
     uint256 public periodFinish = 0;
+    uint256 public lockingPeriod = 5 days;
     uint256 public rewardRate = 0;
-    uint256 public rewardsDuration = 7 days;
+    uint256 public rewardsDuration = 5 days;
     uint256 public lastUpdateTime;
     uint256 public rewardPerTokenStored;
 
