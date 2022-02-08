@@ -25,7 +25,7 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 5. Global variable vs Local variable naming conventions, to prevent variable shadowing
 6. ~~No need to inherit claimRewardAmount function from RewardsDistributionRecipient~~
 7. ~~Contract destruction finalize()~~
-8. Proxy contract for contract upgrade?
+8. ~~Proxy contract for contract upgrade?~~
 9. Lost token recovery
 10. ~~Avoid for loops on array~~ neglectable in this case
 11. Pause contract
