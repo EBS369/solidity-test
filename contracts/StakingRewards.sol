@@ -25,8 +25,8 @@ contract StakingRewards is
     IERC20 public rewardsToken; // constructor
     IERC20 public stakingToken; // constructor
 
-    uint256 public lockingPeriod = 5 days;
-    uint256 public rewardsDuration = 5 days;
+    uint256 public lockingPeriod = 5 days; // essentially unmodifiable, consider modify with factory
+    uint256 public rewardsDuration = 5 days; // essentially unmodifiable, consider modify with factory
     uint256 public rewardPerTokenStored; // updateReward
 
     uint256 public periodFinish = 0; // claimRewardAmount
