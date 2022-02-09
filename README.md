@@ -17,6 +17,9 @@ https://testnet.snowtrace.io/address/0x5aa2c93589b2ec986f0465c62aabb4d692bac213#
 #### Funding (Staking Rewards)
 https://testnet.snowtrace.io/tx/0xf451190342dcf43b29db5c621c931c2012e2f4359e8d9e8a09d0927be313991a
 
+#### Staking (Staking Rewards)
+https://testnet.snowtrace.io/tx/0x4e79c971c75c43fce04a53975a4ada3749c8ab55056c442f6cba056a6dc91170
+
 ### LP ($AVAX-$NEW)
 https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 
