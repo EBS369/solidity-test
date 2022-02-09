@@ -11,13 +11,12 @@ contract StakingRewardsFactory is Ownable {
     using SafeERC20 for IERC20;
     using SafeMath for uint256;
 
-    address public rewardsToken;
     uint256 public stakingRewardsGenesis;
 
     address[] public stakingTokens;
 
     struct StakingRewardsInfo {
-        address stakingRewards;
+        address stakingRewards; // == rewardsToken
         uint256 rewardAmount;
         uint256 duration;
     }
@@ -25,15 +24,13 @@ contract StakingRewardsFactory is Ownable {
     mapping(address => StakingRewardsInfo)
         public stakingRewardsInfoByStakingToken;
 
-    constructor(address _rewardsToken, uint256 _stakingRewardsGenesis)
+    constructor(uint256 _stakingRewardsGenesis)
         Ownable()
     {
         require(
             _stakingRewardsGenesis >= block.timestamp,
             "StakingRewardsFactory::constructor: genesis too soon"
         );
-        // e.g. $NEW / $AVAX-$NEW LP
-        rewardsToken = _rewardsToken;
         stakingRewardsGenesis = _stakingRewardsGenesis;
     }
 
