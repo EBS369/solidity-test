@@ -12,7 +12,7 @@ https://testnet.snowtrace.io/tx/0x0862af2bbf531f052c0b82e73665e2005c0056a3fb823f
 https://testnet.snowtrace.io/address/0xc586c88482776e3c36edc58430a3660d2af61dcc
 
 ### Staking Rewards ($AVAX-$NEW LP) Contract & TX - Stake LP for LP
-https://testnet.snowtrace.io/address/0xc586c88482776e3c36edc58430a3660d2af61dcc
+https://testnet.snowtrace.io/tx/0x860b539f21e72290a6301800506213e3edeabf41dfb050a8110ebfce27a6a304
 
 ### LP ($AVAX-$NEW)
 https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
