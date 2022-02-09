@@ -2,7 +2,8 @@
 The repairing of [a broken Solidity smart contract project](https://github.com/EBS369/solidity-test/commit/636d68088199400193bf53757a2bbeefeb62febd)
 
 ## Status
-Awaiting time pass genesis time to fund StakingRewards (2022/02/09 (YYYY/MM/DD) Wednesday 17:00 HKT)
+Awaiting time pass genesis time to fund StakingRewards (2022/02/09 (YYYY/MM/DD) Wednesday 17:00 HKT)\
+TODO: Expose all onlyRewardsDistribution methods via Factory
 
 ## Live (AVAX Fuji Testnet)
 
