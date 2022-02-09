@@ -20,7 +20,7 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 ## Enhancements
 
 1. Lowest privilege accessibility function modifiers
-2. Emit events vs Gas optimization
+2. ~~Emit events vs Gas optimization~~
 3. Remove irrelevant branching
 4. One contract per Solidity file
 5. Global variable vs Local variable naming conventions, to prevent variable shadowing
@@ -32,8 +32,8 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 11. Pause contract (Complete pause or withdraw pause?)
 12. Do not modify contract state inside modifier
 13. Intentionally revert if stake already exists (stakeTransferWithBalance), to prevent timelock reset attacks
-14. C3 linearization: Ownable RewardsDistributionRecipient, not Ownable StakingRewards, StakingRewards inherits RewardsDistributionRecipient
-15. ~~Consider unifying Ownable and RewardsDistributionRecipient (Effectively 2 Ownables)~~ Consider delegating to factory
+14. ~~C3 linearization: Ownable RewardsDistributionRecipient, not Ownable StakingRewards, StakingRewards inherits RewardsDistributionRecipient~~
+15. ~~Consider unifying Ownable and RewardsDistributionRecipient (Effectively 2 Ownables)~~
 16. Delete expired mapping entries for gas refund
 17. Consider building an LP alike token as receipt of deposit / staking (e.g. Beefy Finance)
 18. Minimal deposit amount (e.g. 1e16 for 0.01 of an 18 decimal token)
