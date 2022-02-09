@@ -29,9 +29,9 @@ contract StakingRewards is
     uint256 public rewardsDuration = 5 days; // essentially unmodifiable, consider modify with factory
     uint256 public rewardPerTokenStored; // updateReward
 
-    uint256 public periodFinish = 0; // claimRewardAmount
-    uint256 public rewardRate = 0; // claimRewardAmount
-    uint256 public lastUpdateTime; // claimRewardAmount, updateReward
+    uint256 public periodFinish = 0; // notifyRewardAmount
+    uint256 public rewardRate = 0; // notifyRewardAmount
+    uint256 public lastUpdateTime; // notifyRewardAmount, updateReward
 
     mapping(address => uint256) public userRewardPerTokenPaid; // updateReward
     mapping(address => uint256) public rewards; // updateReward
@@ -183,7 +183,7 @@ contract StakingRewards is
     }
 
     /* ========== RESTRICTED FUNCTIONS ========== */
-    function claimRewardAmount(uint256 _reward, uint256 _duration)
+    function notifyRewardAmount(uint256 _reward, uint256 _duration)
         external
         override
         onlyRewardsDistribution

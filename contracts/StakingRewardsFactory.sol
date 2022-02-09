@@ -123,20 +123,20 @@ contract StakingRewardsFactory is Ownable {
     }
 
     /* ========== MODIFIERS ========== */
-    function claimRewardAmounts() public {
+    function notifyRewardAmounts() public {
         require(
             stakingTokens.length > 0,
-            "StakingRewardsFactory::claimRewardAmounts: called before any deploys"
+            "StakingRewardsFactory::notifyRewardAmounts: called before any deploys"
         );
         for (uint256 i = 0; i < stakingTokens.length; i++) {
-            claimRewardAmount(stakingTokens[i]);
+            notifyRewardAmount(stakingTokens[i]);
         }
     }
 
-    function claimRewardAmount(address _stakingToken) public {
+    function notifyRewardAmount(address _stakingToken) public {
         require(
             block.timestamp >= stakingRewardsGenesis,
-            "StakingRewardsFactory::claimRewardAmount: too soon"
+            "StakingRewardsFactory::notifyRewardAmount: too soon"
         );
 
         StakingRewardsInfo storage info = stakingRewardsInfoByStakingToken[
@@ -144,7 +144,7 @@ contract StakingRewardsFactory is Ownable {
         ];
         require(
             info.stakingRewards != address(0),
-            "StakingRewardsFactory::claimRewardAmount: not deployed"
+            "StakingRewardsFactory::notifyRewardAmount: not deployed"
         );
 
         if (info.rewardAmount > 0 && info.duration > 0) {
@@ -160,9 +160,9 @@ contract StakingRewardsFactory is Ownable {
                     info.stakingRewards,
                     rewardAmount
                 ),
-                "StakingRewardsFactory::claimRewardAmount: transfer failed"
+                "StakingRewardsFactory::notifyRewardAmount: transfer failed"
             );
-            StakingRewards(info.stakingRewards).claimRewardAmount(
+            StakingRewards(info.stakingRewards).notifyRewardAmount(
                 rewardAmount,
                 duration
             );
