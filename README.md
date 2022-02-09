@@ -8,7 +8,8 @@ Factory: Attempting to deploy
 ## Live (AVAX Fuji Testnet)
 
 ### Staking Rewards Factory Contract & TX
-Soon
+https://testnet.snowtrace.io/tx/0x0862af2bbf531f052c0b82e73665e2005c0056a3fb823ff5a90d62bd108be11f
+https://testnet.snowtrace.io/address/0xc586c88482776e3c36edc58430a3660d2af61dcc
 
 ### Staking Rewards ($AVAX-$NEW LP) Contract & TX
 Soon
