@@ -55,28 +55,30 @@ contract StakingRewardsFactory is Ownable {
         info.stakingRewards = address(
             new StakingRewards(address(this), rewardsToken, _stakingToken)
         );
-
         info.rewardAmount = _rewardAmount;
         info.duration = _rewardsDuration;
-
         stakingTokens.push(_stakingToken);
     }
 
     function update(
-        address stakingToken,
-        uint256 rewardAmount,
-        uint256 rewardsDuration
+        address _stakingToken,
+        uint256 _rewardAmount,
+        uint256 _rewardsDuration
     ) public onlyOwner {
         StakingRewardsInfo storage info = stakingRewardsInfoByStakingToken[
-            stakingToken
+            _stakingToken
         ];
         require(
-            info.stakingRewards != address(0),
-            "StakingRewardsFactory::update: not deployed"
+            info.stakingRewards == address(0),
+            "StakingRewardsFactory::deploy: already deployed"
         );
 
-        info.rewardAmount = rewardAmount;
-        info.duration = rewardsDuration;
+        info.stakingRewards = address(
+            new StakingRewards(address(this), rewardsToken, _stakingToken)
+        );
+        info.rewardAmount = _rewardAmount;
+        info.duration = _rewardsDuration;
+        stakingTokens.push(_stakingToken);
     }
 
     /* ========== MODIFIERS ========== */
