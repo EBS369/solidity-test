@@ -46,9 +46,9 @@ contract StakingRewards is
         address _rewardsToken,
         address _stakingToken
     ) {
+        rewardsDistribution = _rewardsDistribution;
         rewardsToken = IERC20(_rewardsToken);
         stakingToken = IERC20(_stakingToken);
-        rewardsDistribution = _rewardsDistribution;
     }
 
     /* ========== VIEWS ========== */
