@@ -155,8 +155,7 @@ contract StakingRewards is
         );
         totalSupply_ = totalSupply_.sub(_amount);
         balances_[msg.sender] = balances_[msg.sender].sub(_amount);
-        // lockingTimeStamp_ reset unneeded, is unix epoch
-        // consider reset if balances_[msg.sender] == 0
+        // lockingTimeStamp_ reset unneeded
         stakingToken.safeTransfer(msg.sender, _amount);
         emit Withdrawn(msg.sender, _amount);
     }
