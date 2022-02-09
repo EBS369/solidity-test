@@ -110,6 +110,7 @@ contract StakingRewards is
         override
         nonReentrant
         updateReward(msg.sender)
+        whenNotPaused
     {
         require(_amount > 0, "Nothing to stake");
         // TODO Front-end: Warn locking period reset if stake already exists
@@ -125,6 +126,7 @@ contract StakingRewards is
         override
         nonReentrant
         updateReward(_account)
+        whenNotPaused
     {
         require(_amount > 0, "Nothing to stake");
         // Intentionally revert if stake already exists (lockingTimeStamp_ reset attack)
@@ -144,6 +146,7 @@ contract StakingRewards is
         override
         nonReentrant
         updateReward(msg.sender)
+        whenNotPaused
     {
         require(_amount > 0, "Nothing to withdraw");
         require(
@@ -157,7 +160,13 @@ contract StakingRewards is
         emit Withdrawn(msg.sender, _amount);
     }
 
-    function getReward() public override nonReentrant updateReward(msg.sender) {
+    function getReward()
+        public
+        override
+        nonReentrant
+        updateReward(msg.sender)
+        whenNotPaused
+    {
         uint256 reward = rewards[msg.sender];
         if (reward > 0) {
             rewards[msg.sender] = 0;
@@ -166,7 +175,7 @@ contract StakingRewards is
         }
     }
 
-    function quit() external override {
+    function quit() external override whenNotPaused {
         withdraw(balances_[msg.sender]);
         getReward();
     }
