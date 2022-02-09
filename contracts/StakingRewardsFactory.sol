@@ -13,9 +13,9 @@ contract StakingRewardsFactory is Ownable {
 
     /* ========== STATE VARIABLES ========== */
     address public rewardsToken;
-    uint256 public stakingRewardsGenesis;
+    uint256 public stakingRewardsGenesis; // genesis unix epoch
 
-    address[] public stakingTokens;
+    address[] public stakingTokens; // deployed StakingRewards instances
 
     struct StakingRewardsInfo {
         address stakingRewards;
