@@ -18,8 +18,8 @@ contract StakingRewards is
     Pausable,
     ReentrancyGuard
 {
-    using SafeMath for uint256;
     using SafeERC20 for IERC20;
+    using SafeMath for uint256;
 
     /* ========== STATE VARIABLES ========== */
     IERC20 public rewardsToken;
@@ -34,9 +34,9 @@ contract StakingRewards is
     mapping(address => uint256) public userRewardPerTokenPaid;
     mapping(address => uint256) public rewards;
 
-    uint256 private totalSupply;
-    mapping(address => uint256) private balances;
-    mapping(address => uint256) private lockingTimeStamp;
+    uint256 private totalSupply_;
+    mapping(address => uint256) private balances_;
+    mapping(address => uint256) private lockingTimeStamp_;
 
     /* ========== CONSTRUCTOR ========== */
     constructor(
@@ -56,12 +56,12 @@ contract StakingRewards is
         override
         returns (uint256)
     {
-        return balances[_account];
+        return balances_[_account];
     }
 
     function earned(address _account) public view override returns (uint256) {
         return
-            balances[_account]
+            balances_[_account]
                 .mul(rewardPerToken().sub(userRewardPerTokenPaid[_account]))
                 .div(1e18)
                 .add(rewards[_account]);
@@ -72,7 +72,7 @@ contract StakingRewards is
     }
 
     function getTotalSupply() external view override returns (uint256) {
-        return totalSupply;
+        return totalSupply_;
     }
 
     function lastTimeRewardApplicable() public view override returns (uint256) {
@@ -80,7 +80,7 @@ contract StakingRewards is
     }
 
     function rewardPerToken() public view override returns (uint256) {
-        if (totalSupply == 0) {
+        if (totalSupply_ == 0) {
             return rewardPerTokenStored;
         }
         return
@@ -89,7 +89,7 @@ contract StakingRewards is
                     .sub(lastUpdateTime)
                     .mul(rewardRate)
                     .mul(1e18)
-                    .div(totalSupply)
+                    .div(totalSupply_)
             );
     }
 
@@ -99,7 +99,7 @@ contract StakingRewards is
         override
         returns (uint256)
     {
-        return lockingTimeStamp[_account];
+        return lockingTimeStamp_[_account];
     }
 
     /* ========== MUTATIVE FUNCTIONS ========== */
@@ -111,9 +111,9 @@ contract StakingRewards is
     {
         require(_amount > 0, "Nothing to stake");
         // TODO Front-end: Warn locking period reset if stake already exists
-        totalSupply = totalSupply.add(_amount);
-        balances[msg.sender] = balances[msg.sender].add(_amount);
-        lockingTimeStamp[msg.sender] = lockingPeriod.add(block.timestamp);
+        totalSupply_ = totalSupply_.add(_amount);
+        balances_[msg.sender] = balances_[msg.sender].add(_amount);
+        lockingTimeStamp_[msg.sender] = lockingPeriod.add(block.timestamp);
         stakingToken.safeTransferFrom(msg.sender, address(this), _amount);
         emit Staked(msg.sender, _amount);
     }
@@ -125,14 +125,14 @@ contract StakingRewards is
         updateReward(_account)
     {
         require(_amount > 0, "Nothing to stake");
-        // Intentionally revert if stake already exists (lockingTimeStamp reset attack?)
+        // Intentionally revert if stake already exists (lockingTimeStamp_ reset attack?)
         require(
-            block.timestamp >= lockingTimeStamp[msg.sender],
+            block.timestamp >= lockingTimeStamp_[msg.sender],
             "Time lock is still in place"
         );
-        totalSupply = totalSupply.add(_amount);
-        balances[_account] = balances[_account].add(_amount);
-        lockingTimeStamp[_account] = lockingPeriod.add(block.timestamp);
+        totalSupply_ = totalSupply_.add(_amount);
+        balances_[_account] = balances_[_account].add(_amount);
+        lockingTimeStamp_[_account] = lockingPeriod.add(block.timestamp);
         stakingToken.safeTransferFrom(msg.sender, address(this), _amount);
         emit Staked(_account, _amount);
     }
@@ -145,11 +145,11 @@ contract StakingRewards is
     {
         require(_amount > 0, "Nothing to withdraw");
         require(
-            block.timestamp >= lockingTimeStamp[msg.sender],
+            block.timestamp >= lockingTimeStamp_[msg.sender],
             "Time lock is still in place"
         );
-        totalSupply = totalSupply.sub(_amount);
-        balances[msg.sender] = balances[msg.sender].sub(_amount);
+        totalSupply_ = totalSupply_.sub(_amount);
+        balances_[msg.sender] = balances_[msg.sender].sub(_amount);
         stakingToken.safeTransfer(msg.sender, _amount);
         emit Withdrawn(msg.sender, _amount);
     }
@@ -164,7 +164,7 @@ contract StakingRewards is
     }
 
     function quit() external override {
-        withdraw(balances[msg.sender]);
+        withdraw(balances_[msg.sender]);
         getReward();
     }
 
