@@ -34,6 +34,7 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 14. C3 linearization: Ownable RewardsDistributionRecipient, not Ownable StakingRewards, StakingRewards inherits RewardsDistributionRecipient
 15. ~~Consider unifying Ownable and RewardsDistributionRecipient (Effectively 2 Ownables)~~ Consider delegating to factory
 16. Should deploy multiple StakingRewards instances in one factory deploy() call
+17. Delete expired mapping entries for gas refund
 
 ## Critical
 
