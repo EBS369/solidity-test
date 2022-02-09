@@ -3,7 +3,7 @@ The repairing of [a broken Solidity smart contract project](https://github.com/E
 
 ## Status
 StakingRewards: Implemented
-In the middle of a rewrite (factory)
+Factory: Attempting to deploy
 
 ## Live (AVAX Fuji Testnet)
 
