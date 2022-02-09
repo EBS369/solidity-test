@@ -92,13 +92,13 @@ contract StakingRewardsFactory is Ownable {
         }
     }
 
-    function claimRewardAmount(address stakingToken) public {
+    function claimRewardAmount(address _stakingToken) public {
         require(
             block.timestamp >= stakingRewardsGenesis,
             "StakingRewardsFactory::claimRewardAmount: too soon"
         );
         StakingRewardsInfo storage info = stakingRewardsInfoByStakingToken[
-            stakingToken
+            _stakingToken
         ];
         require(
             info.stakingRewards != address(0),
