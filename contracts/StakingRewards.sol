@@ -66,7 +66,7 @@ contract StakingRewards is
             balances_[_account]
                 .mul(rewardPerToken().sub(userRewardPerTokenPaid[_account]))
                 .div(1e18)
-                .add(rewards[_account]);
+                .add(rewards[_account]); // TODO notice reward token decimals
     }
 
     function getRewardForDuration() external view override returns (uint256) {
@@ -91,7 +91,7 @@ contract StakingRewards is
                     .sub(lastUpdateTime)
                     .mul(rewardRate)
                     .mul(1e18)
-                    .div(totalSupply_)
+                    .div(totalSupply_) // TODO notice reward token decimals
             );
     }
 
