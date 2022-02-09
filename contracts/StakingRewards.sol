@@ -27,14 +27,14 @@ contract StakingRewards is
 
     uint256 public lockingPeriod = 5 days;
     uint256 public rewardsDuration = 5 days;
-    uint256 public rewardPerTokenStored;
+    uint256 public rewardPerTokenStored; // updateReward
 
     uint256 public periodFinish = 0; // claimRewardAmount
     uint256 public rewardRate = 0; // claimRewardAmount
-    uint256 public lastUpdateTime; // claimRewardAmount
+    uint256 public lastUpdateTime; // claimRewardAmount, updateReward
 
-    mapping(address => uint256) public userRewardPerTokenPaid;
-    mapping(address => uint256) public rewards;
+    mapping(address => uint256) public userRewardPerTokenPaid; // updateReward
+    mapping(address => uint256) public rewards; // updateReward
 
     uint256 private totalSupply_;
     mapping(address => uint256) private balances_;
