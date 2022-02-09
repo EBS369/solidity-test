@@ -104,11 +104,11 @@ contract StakingRewardsFactory is Ownable, Pausable {
         StakingRewards(_stakingToken).recoverLostTokenERC20(_token, _amount);
     }
 
-    function pause(address _stakingToken) external onlyOwner {
+    function pauseStakingRewards(address _stakingToken) external onlyOwner {
         StakingRewards(_stakingToken).pause();
     }
 
-    function unpause(address _stakingToken) external onlyOwner {
+    function unpauseStakingRewards(address _stakingToken) external onlyOwner {
         StakingRewards(_stakingToken).unpause();
     }
 
@@ -121,6 +121,14 @@ contract StakingRewardsFactory is Ownable, Pausable {
         onlyOwner
     {
         IERC20(_token).safeTransfer(owner(), _amount);
+    }
+
+    function pause() external onlyOwner {
+        _pause();
+    }
+
+    function unpause() external onlyOwner {
+        _unpause();
     }
 
     /* ========== MODIFIERS ========== */
