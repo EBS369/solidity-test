@@ -249,10 +249,12 @@ contract StakingRewards is
 
     function pause() external onlyRewardsDistribution {
         _pause();
+        emit Paused();
     }
 
     function unpause() external onlyRewardsDistribution {
         _unpause();
+        emit Unpaused();
     }
 
     /* ========== MODIFIERS ========== */
@@ -277,4 +279,6 @@ contract StakingRewards is
         address indexed _to,
         uint256 _amount
     );
+    event Paused();
+    event Unpaused();
 }
