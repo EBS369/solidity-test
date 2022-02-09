@@ -113,7 +113,7 @@ contract StakingRewards is
         whenNotPaused
     {
         require(_amount > 0, "Nothing to stake");
-        // TODO Front-end: Warn locking period reset if stake already exists
+        // TODO Front-end: Warn locking period reset if staked
         totalSupply_ = totalSupply_.add(_amount);
         balances_[msg.sender] = balances_[msg.sender].add(_amount);
         lockingTimeStamp_[msg.sender] = lockingPeriod.add(block.timestamp);
