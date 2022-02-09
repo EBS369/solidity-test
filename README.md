@@ -25,14 +25,13 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 
 ## Enhancements
 
-1. Remove irrelevant branching
-2. Should not modify contract state with modifier
-3. Global variable vs Local variable naming conventions, to prevent variable shadowing
-4. Lowest privilege accessibility function modifiers
-5. One contract per Solidity file
-6. Unifying Ownable and RewardsDistributionRecipient
-7. Consider building an LP alike token as receipt of deposit / staking (e.g. Beefy Finance)
-8. Minimal deposit amount (e.g. 1e16 for 0.01 of an 18 decimal token)
+1. Use lowest privilege accessibility function modifiers
+2. Do not modify contract state with modifier
+3. Use global variable vs local variable naming conventions
+4. Do not introduce irrelevant branching
+5. Only one contract per Solidity file
+7. Consider LP / rebase token as staking receipt
+8. Minimal deposit amount (i.e. 1e16 for 0.01 of 18 decimal token)
 
 ## Critical
 
