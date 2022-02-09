@@ -25,28 +25,23 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 
 ## Enhancements
 
-1. Lowest privilege accessibility function modifiers
-2. Remove irrelevant branching
-3. One contract per Solidity file
-4. Global variable vs Local variable naming conventions, to prevent variable shadowing
-5. Lost token recovery
-6. ~~Avoid for loops on array~~ neglectable in this case
-7. Pause contract (Public & External functions)
-8. Do not modify contract state inside modifier
-9. Intentionally revert if stake already exists (stakeTransferWithBalance), to prevent timelock reset attacks
-10. Unifying Ownable and RewardsDistributionRecipient
-11. ~~Delete expired mapping entries for gas refund~~
-12. Consider building an LP alike token as receipt of deposit / staking (e.g. Beefy Finance)
-13. Minimal deposit amount (e.g. 1e16 for 0.01 of an 18 decimal token)
-14. ~~Consider [clone factory pattern](https://blog.logrocket.com/creating-contract-factory-clone-solidity-smart-contracts/)~~
-15. claimRewardAmount should be notifyRewardAmount by convention
+1. Remove irrelevant branching
+2. Should not modify contract state with modifier
+3. Global variable vs Local variable naming conventions, to prevent variable shadowing
+4. Lowest privilege accessibility function modifiers
+5. One contract per Solidity file
+6. Unifying Ownable and RewardsDistributionRecipient
+7. Consider building an LP alike token as receipt of deposit / staking (e.g. Beefy Finance)
+8. Minimal deposit amount (e.g. 1e16 for 0.01 of an 18 decimal token)
 
 ## Critical
 
-1. All interface functions need implementation (StakingRewards)
-2. Missing reentrancy attack protections
-3. Locking timestamp setter should not be exposed to user
-4. viewLockingTimeStamp() signature misses address parameter (mapping(address => uint256))
-5. ~~rewardDuration setter is not included~~
-6. A lot of missing "require" checks
-7. Timelock was not implemented
+1. Unimplemented inherited functions (StakingRewards)
+2. Missing reentrancy protections
+3. Unimplemented locking timestamp
+4. Missing checks
+5. Locking timestamp setter exposed to user
+6. viewLockingTimeStamp() should accept an user address
+7. Locking timestamp attack @ stakeTransferWithBalance
+8. Unimplemented / Partially implemented lost token recovery
+9. Pause contract (Unprotected Public & External functions)
