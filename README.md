@@ -3,7 +3,7 @@ The repairing of [a broken Solidity smart contract project](https://github.com/E
 
 ## Status
 StakingRewards: Implemented\
-Factory: Attempting to deploy
+Factory: Awaiting time pass genesis time (2022/02/09 (YYYY/MM/DD) Wednesday 17:00 HKT)
 
 ## Live (AVAX Fuji Testnet)
 
