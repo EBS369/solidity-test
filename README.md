@@ -39,6 +39,7 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 18. Minimal deposit amount (e.g. 1e16 for 0.01 of an 18 decimal token)
 19. Consider [clone factory pattern](https://blog.logrocket.com/creating-contract-factory-clone-solidity-smart-contracts/)
 20. ~~Should deploy multiple StakingRewards instances in one factory deploy() call~~
+21. claimRewardAmount should be notifyRewardAmount by convention
 
 ## Critical
 
