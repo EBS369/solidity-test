@@ -7,12 +7,12 @@ Awaiting time pass genesis time to fund StakingRewards (2022/02/09 (YYYY/MM/DD) 
 ## Live (AVAX Fuji Testnet)
 
 ### Staking Rewards Factory Contract & TX
-https://testnet.snowtrace.io/tx/0x0862af2bbf531f052c0b82e73665e2005c0056a3fb823ff5a90d62bd108be11f
-https://testnet.snowtrace.io/address/0xc586c88482776e3c36edc58430a3660d2af61dcc#code
+https://testnet.snowtrace.io/tx/0xcff852102d4827e821f63f85d396eff80c03a3f1a1f36bd276471058e0cdeaee
+https://testnet.snowtrace.io/address/0xedec25c8fe78286e0bc8ae7825b2de0fc3375d50#code
 
 ### Staking Rewards ($AVAX-$NEW LP) Contract & TX - Stake LP for LP
-https://testnet.snowtrace.io/tx/0x860b539f21e72290a6301800506213e3edeabf41dfb050a8110ebfce27a6a304
-https://testnet.snowtrace.io/address/0x24b1d43f649aa7a724ac16d03e38df867d54f059#code
+https://testnet.snowtrace.io/tx/0x3ad250b0346cb9ba855d77e71207fc87e71372179fdab5795e9171ceec1fcebb
+https://testnet.snowtrace.io/address/0x5aa2c93589b2ec986f0465c62aabb4d692bac213#code
 
 ### LP ($AVAX-$NEW)
 https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673

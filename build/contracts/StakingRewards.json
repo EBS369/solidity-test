@@ -7512,7 +7512,7 @@
         314
       ],
       "IStakingRewards": [
-        2531
+        2572
       ],
       "Math": [
         945
@@ -7630,7 +7630,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 2123,
-        "sourceUnit": 2532,
+        "sourceUnit": 2573,
         "src": "467:42:11",
         "symbolAliases": [],
         "unitAlias": ""
@@ -7655,7 +7655,7 @@
               "id": 1362,
               "name": "IStakingRewards",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 2531,
+              "referencedDeclaration": 2572,
               "src": "587:15:11"
             },
             "id": 1363,
@@ -7710,7 +7710,7 @@
           196,
           857,
           1351,
-          2531
+          2572
         ],
         "name": "StakingRewards",
         "nameLocation": "565:14:11",
@@ -8605,7 +8605,7 @@
           },
           {
             "baseFunctions": [
-              2473
+              2514
             ],
             "body": {
               "id": 1454,
@@ -8748,7 +8748,7 @@
           },
           {
             "baseFunctions": [
-              2480
+              2521
             ],
             "body": {
               "id": 1484,
@@ -9167,7 +9167,7 @@
           },
           {
             "baseFunctions": [
-              2485
+              2526
             ],
             "body": {
               "id": 1496,
@@ -9307,7 +9307,7 @@
           },
           {
             "baseFunctions": [
-              2490
+              2531
             ],
             "body": {
               "id": 1505,
@@ -9396,7 +9396,7 @@
           },
           {
             "baseFunctions": [
-              2495
+              2536
             ],
             "body": {
               "id": 1519,
@@ -9566,7 +9566,7 @@
           },
           {
             "baseFunctions": [
-              2500
+              2541
             ],
             "body": {
               "id": 1551,
@@ -10008,7 +10008,7 @@
           },
           {
             "baseFunctions": [
-              2507
+              2548
             ],
             "body": {
               "id": 1564,
@@ -10151,7 +10151,7 @@
           },
           {
             "baseFunctions": [
-              2518
+              2559
             ],
             "body": {
               "id": 1635,
@@ -11054,7 +11054,7 @@
           },
           {
             "baseFunctions": [
-              2525
+              2566
             ],
             "body": {
               "id": 1714,
@@ -12074,7 +12074,7 @@
           },
           {
             "baseFunctions": [
-              2530
+              2571
             ],
             "body": {
               "id": 1781,
@@ -12929,7 +12929,7 @@
           },
           {
             "baseFunctions": [
-              2510
+              2551
             ],
             "body": {
               "id": 1827,
@@ -13453,7 +13453,7 @@
           },
           {
             "baseFunctions": [
-              2513
+              2554
             ],
             "body": {
               "id": 1844,
@@ -17127,7 +17127,7 @@
         314
       ],
       "IStakingRewards": [
-        2531
+        2572
       ],
       "Math": [
         945
@@ -17245,7 +17245,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 2123,
-        "sourceUnit": 2532,
+        "sourceUnit": 2573,
         "src": "467:42:11",
         "symbolAliases": [],
         "unitAlias": ""
@@ -17270,7 +17270,7 @@
               "id": 1362,
               "name": "IStakingRewards",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 2531,
+              "referencedDeclaration": 2572,
               "src": "587:15:11"
             },
             "id": 1363,
@@ -17325,7 +17325,7 @@
           196,
           857,
           1351,
-          2531
+          2572
         ],
         "name": "StakingRewards",
         "nameLocation": "565:14:11",
@@ -18220,7 +18220,7 @@
           },
           {
             "baseFunctions": [
-              2473
+              2514
             ],
             "body": {
               "id": 1454,
@@ -18363,7 +18363,7 @@
           },
           {
             "baseFunctions": [
-              2480
+              2521
             ],
             "body": {
               "id": 1484,
@@ -18782,7 +18782,7 @@
           },
           {
             "baseFunctions": [
-              2485
+              2526
             ],
             "body": {
               "id": 1496,
@@ -18922,7 +18922,7 @@
           },
           {
             "baseFunctions": [
-              2490
+              2531
             ],
             "body": {
               "id": 1505,
@@ -19011,7 +19011,7 @@
           },
           {
             "baseFunctions": [
-              2495
+              2536
             ],
             "body": {
               "id": 1519,
@@ -19181,7 +19181,7 @@
           },
           {
             "baseFunctions": [
-              2500
+              2541
             ],
             "body": {
               "id": 1551,
@@ -19623,7 +19623,7 @@
           },
           {
             "baseFunctions": [
-              2507
+              2548
             ],
             "body": {
               "id": 1564,
@@ -19766,7 +19766,7 @@
           },
           {
             "baseFunctions": [
-              2518
+              2559
             ],
             "body": {
               "id": 1635,
@@ -20669,7 +20669,7 @@
           },
           {
             "baseFunctions": [
-              2525
+              2566
             ],
             "body": {
               "id": 1714,
@@ -21689,7 +21689,7 @@
           },
           {
             "baseFunctions": [
-              2530
+              2571
             ],
             "body": {
               "id": 1781,
@@ -22544,7 +22544,7 @@
           },
           {
             "baseFunctions": [
-              2510
+              2551
             ],
             "body": {
               "id": 1827,
@@ -23068,7 +23068,7 @@
           },
           {
             "baseFunctions": [
-              2513
+              2554
             ],
             "body": {
               "id": 1844,
@@ -26735,7 +26735,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-09T05:03:04.239Z",
+  "updatedAt": "2022-02-09T06:14:45.653Z",
   "devdoc": {
     "kind": "dev",
     "methods": {
