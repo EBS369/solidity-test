@@ -69,8 +69,8 @@ contract StakingRewardsFactory is Ownable {
             _stakingToken
         ];
         require(
-            info.stakingRewards == address(0),
-            "StakingRewardsFactory::deploy: already deployed"
+            info.stakingRewards != address(0),
+            "StakingRewardsFactory::deploy: not deployed"
         );
 
         info.stakingRewards = address(
@@ -78,7 +78,7 @@ contract StakingRewardsFactory is Ownable {
         );
         info.rewardAmount = _rewardAmount;
         info.duration = _rewardsDuration;
-        stakingTokens.push(_stakingToken);
+        //stakingTokens.push(_stakingToken);
     }
 
     /* ========== MODIFIERS ========== */
