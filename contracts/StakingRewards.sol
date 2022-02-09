@@ -176,6 +176,7 @@ contract StakingRewards is
     }
 
     function quit() external override whenNotPaused {
+        // withdraw & getReward have nonReentrant
         withdraw(balances_[msg.sender]);
         getReward();
     }
