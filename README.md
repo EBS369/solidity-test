@@ -7,18 +7,26 @@ Functional
 ## Live (AVAX Fuji Testnet)
 
 ### Staking Rewards Factory Contract & TX
-https://testnet.snowtrace.io/tx/0xcff852102d4827e821f63f85d396eff80c03a3f1a1f36bd276471058e0cdeaee
-https://testnet.snowtrace.io/address/0xedec25c8fe78286e0bc8ae7825b2de0fc3375d50#code
+https://testnet.snowtrace.io/address/0xc190ea9803f93c2e0f9c82f68cc6dbad053e8928#code
+
+#### Deploy Staking Rewards Factory
+https://testnet.snowtrace.io/tx/0x79f618676769cd977516ae691d02d8f0f20cb02c725968a139e05b770984e4fb
+
+#### Deploy Staking Rewards
+https://testnet.snowtrace.io/tx/0x262c9e37377755d8c153aee5b788888a5f719c13c102020c2b45233676c747d3
+
+#### Fund Staking Rewards Factory
+https://testnet.snowtrace.io/tx/0xeb66902924525ee105df412967196144dd5f2969acce415ca89618aa5eae415b
+
+#### Fund Staking Rewards
+https://testnet.snowtrace.io/tx/0x65bebc0a973f5a471ebf4e6653402b5acf74282ca506c8fb08905794551b71c6
 
 ### Staking Rewards ($AVAX-$NEW LP) Contract & TX - Stake LP for LP
-https://testnet.snowtrace.io/tx/0x3ad250b0346cb9ba855d77e71207fc87e71372179fdab5795e9171ceec1fcebb
-https://testnet.snowtrace.io/address/0x5aa2c93589b2ec986f0465c62aabb4d692bac213#code
+https://testnet.snowtrace.io/address/0x55de80bafa027222dff69090c6b9bfc4bbdad90b#code
 
-#### Funding (Staking Rewards)
-https://testnet.snowtrace.io/tx/0xf451190342dcf43b29db5c621c931c2012e2f4359e8d9e8a09d0927be313991a
-
-#### Staking (Staking Rewards)
-https://testnet.snowtrace.io/tx/0x4e79c971c75c43fce04a53975a4ada3749c8ab55056c442f6cba056a6dc91170
+#### Stake
+https://testnet.snowtrace.io/tx/0x9732b57edc74424f3687b3bbd3c3a91af447365f3cc0abf39009f8f8b402917c
+https://testnet.snowtrace.io/tx/0x88faacfe26caa0da82f82fc140aa4ac3ff40fccf1f3335c76b46363d1047ab30
 
 ### LP ($AVAX-$NEW)
 https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
