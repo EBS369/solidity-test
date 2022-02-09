@@ -82,6 +82,8 @@ contract StakingRewardsFactory is Ownable, Pausable {
         //stakingTokens.push(_stakingToken);
     }
 
+    // ---
+
     function setRewardsDuration(address _stakingToken, uint256 _duration)
         external
         onlyOwner
@@ -111,6 +113,8 @@ contract StakingRewardsFactory is Ownable, Pausable {
     function unpauseStakingRewards(address _stakingToken) external onlyOwner {
         StakingRewards(_stakingToken).unpause();
     }
+
+    // ---
 
     function recoverLostNetworkToken() external onlyOwner {
         payable(owner()).transfer(address(this).balance);
