@@ -97,6 +97,7 @@ contract StakingRewardsFactory is Ownable {
             block.timestamp >= stakingRewardsGenesis,
             "StakingRewardsFactory::claimRewardAmount: too soon"
         );
+
         StakingRewardsInfo storage info = stakingRewardsInfoByStakingToken[
             _stakingToken
         ];
@@ -108,10 +109,12 @@ contract StakingRewardsFactory is Ownable {
         if (info.rewardAmount > 0 && info.duration > 0) {
             uint256 rewardAmount = info.rewardAmount;
             uint256 duration = info.duration;
+
             info.rewardAmount = 0;
             info.duration = 0;
 
             require(
+                // TODO ensure rewardsToken transfer returns bool
                 IERC20(rewardsToken).transfer(
                     info.stakingRewards,
                     rewardAmount
