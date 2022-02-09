@@ -34,10 +34,9 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 13. Intentionally revert if stake already exists (stakeTransferWithBalance), to prevent timelock reset attacks
 14. C3 linearization: Ownable RewardsDistributionRecipient, not Ownable StakingRewards, StakingRewards inherits RewardsDistributionRecipient
 15. ~~Consider unifying Ownable and RewardsDistributionRecipient (Effectively 2 Ownables)~~ Consider delegating to factory
-16. Should deploy multiple StakingRewards instances in one factory deploy() call
-17. Delete expired mapping entries for gas refund
-18. Consider building an LP alike token as receipt of deposit / staking
-19. Minimal deposit amount (e.g. 1e16 for 0.01 of an 18 decimal token)
+16. Delete expired mapping entries for gas refund
+17. Consider building an LP alike token as receipt of deposit / staking
+18. Minimal deposit amount (e.g. 1e16 for 0.01 of an 18 decimal token)
 
 ## Critical
 
@@ -48,3 +47,4 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 5. ~~rewardDuration setter is not included~~
 6. A lot of missing "require" checks
 7. Timelock was not implemented
+8. Should deploy multiple StakingRewards instances in one factory deploy() call
