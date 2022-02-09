@@ -11,6 +11,7 @@ contract StakingRewardsFactory is Ownable {
     using SafeERC20 for IERC20;
     using SafeMath for uint256;
 
+    address public rewardsToken;
     uint256 public stakingRewardsGenesis;
 
     address[] public stakingTokens;
@@ -24,23 +25,24 @@ contract StakingRewardsFactory is Ownable {
     mapping(address => StakingRewardsInfo)
         public stakingRewardsInfoByStakingToken;
 
-    constructor(uint256 _stakingRewardsGenesis)
+    constructor(address _rewardsToken, uint256 _stakingRewardsGenesis)
         Ownable()
     {
         require(
             _stakingRewardsGenesis >= block.timestamp,
             "StakingRewardsFactory::constructor: genesis too soon"
         );
+        rewardsToken = _rewardsToken;
         stakingRewardsGenesis = _stakingRewardsGenesis;
     }
 
     function deploy(
-        address stakingToken,
-        uint256 rewardAmount,
-        uint256 rewardsDuration
+        address _stakingToken,
+        uint256 _rewardAmount,
+        uint256 _rewardsDuration
     ) public onlyOwner {
         StakingRewardsInfo storage info = stakingRewardsInfoByStakingToken[
-            stakingToken
+            _stakingToken
         ];
         require(
             info.stakingRewards == address(0),
@@ -48,13 +50,13 @@ contract StakingRewardsFactory is Ownable {
         );
 
         info.stakingRewards = address(
-            new StakingRewards(address(this), rewardsToken, stakingToken)
+            new StakingRewards(address(this), rewardsToken, _stakingToken)
         );
 
-        info.rewardAmount = rewardAmount;
-        info.duration = rewardsDuration;
+        info.rewardAmount = _rewardAmount;
+        info.duration = _rewardsDuration;
 
-        stakingTokens.push(stakingToken);
+        stakingTokens.push(_stakingToken);
     }
 
     function update(
