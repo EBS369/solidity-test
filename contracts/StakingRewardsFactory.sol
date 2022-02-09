@@ -81,15 +81,31 @@ contract StakingRewardsFactory is Ownable {
         //stakingTokens.push(_stakingToken);
     }
 
-    function recoverLostNetworkToken() external onlyOwner {
-        payable(owner()).transfer(address(this).balance);
-    }
-
-    function recoverLostTokenERC20(address _token, uint256 _amount)
+    function setRewardsDuration(address _stakingToken, uint256 _duration)
         external
         onlyOwner
     {
-        IERC20(_token).safeTransfer(owner(), _amount);
+        StakingRewards(_stakingToken).setRewardsDuration(_duration);
+    }
+
+    function recoverLostNetworkToken(address _stakingToken) external onlyOwner {
+        StakingRewards(_stakingToken).recoverLostNetworkToken();
+    }
+
+    function recoverLostTokenERC20(
+        address _stakingToken,
+        address _token,
+        uint256 _amount
+    ) external onlyOwner {
+        StakingRewards(_stakingToken).recoverLostTokenERC20(_token, _amount);
+    }
+
+    function pause(address _stakingToken) external onlyOwner {
+        StakingRewards(_stakingToken).pause();
+    }
+
+    function unpause(address _stakingToken) external onlyOwner {
+        StakingRewards(_stakingToken).unpause();
     }
 
     /* ========== MODIFIERS ========== */
