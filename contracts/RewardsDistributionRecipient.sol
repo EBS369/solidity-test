@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-
-abstract contract RewardsDistributionRecipient is Ownable {
+abstract contract RewardsDistributionRecipient {
     address public rewardsDistribution;
 
-    function claimRewardAmount(uint256 _reward, uint256 _duration) external virtual;
+    function claimRewardAmount(uint256 _reward, uint256 _duration)
+        external
+        virtual;
 
     function setRewardsDistribution(address _rewardsDistribution)
         external
-        onlyOwner
+        onlyRewardsDistribution
     {
         rewardsDistribution = _rewardsDistribution;
     }

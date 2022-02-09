@@ -45,7 +45,7 @@ contract StakingRewards is
         address _rewardsDistribution,
         address _rewardsToken,
         address _stakingToken
-    ) Ownable() {
+    ) {
         rewardsToken = IERC20(_rewardsToken);
         stakingToken = IERC20(_stakingToken);
         rewardsDistribution = _rewardsDistribution;
@@ -202,7 +202,10 @@ contract StakingRewards is
         emit RewardAdded(_reward, periodFinish);
     }
 
-    function setRewardsDuration(uint256 _duration) external onlyOwner {
+    function setRewardsDuration(uint256 _duration)
+        external
+        onlyRewardsDistribution
+    {
         require(
             block.timestamp >= periodFinish,
             "Existing rewards period incomplete"
@@ -211,29 +214,33 @@ contract StakingRewards is
         emit rewardsDurationUpdated(rewardsDuration);
     }
 
-    function recoverLostNetworkToken() external onlyOwner {
+    function recoverLostNetworkToken() external onlyRewardsDistribution {
         uint256 _amount = address(this).balance;
-        payable(owner()).transfer(_amount);
+        payable(rewardsDistribution).transfer(_amount);
         emit Recovered(
             address(0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE), // common native network token denotation
-            owner(),
+            rewardsDistribution,
             _amount
         );
     }
 
     function recoverLostTokenERC20(address _token, uint256 _amount)
         external
-        onlyOwner
+        onlyRewardsDistribution
     {
-        IERC20(_token).safeTransferFrom(address(this), owner(), _amount);
-        emit Recovered(_token, owner(), _amount);
+        IERC20(_token).safeTransferFrom(
+            address(this),
+            rewardsDistribution,
+            _amount
+        );
+        emit Recovered(_token, rewardsDistribution, _amount);
     }
 
-    function pause() external onlyOwner {
+    function pause() external onlyRewardsDistribution {
         _pause();
     }
 
-    function unpause() external onlyOwner {
+    function unpause() external onlyRewardsDistribution {
         _unpause();
     }
 
