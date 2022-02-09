@@ -239,11 +239,7 @@ contract StakingRewards is
         external
         onlyRewardsDistribution
     {
-        IERC20(_token).safeTransferFrom(
-            address(this),
-            rewardsDistribution,
-            _amount
-        );
+        IERC20(_token).safeTransfer(rewardsDistribution, _amount);
         emit Recovered(_token, rewardsDistribution, _amount);
     }
 

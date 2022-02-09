@@ -89,7 +89,7 @@ contract StakingRewardsFactory is Ownable {
         external
         onlyOwner
     {
-        IERC20(_token).safeTransferFrom(address(this), owner(), _amount);
+        IERC20(_token).safeTransfer(owner(), _amount);
     }
 
     /* ========== MODIFIERS ========== */
