@@ -16,7 +16,7 @@ contract StakingRewardsFactory is Ownable {
     address[] public stakingTokens;
 
     struct StakingRewardsInfo {
-        address stakingRewards; // == rewardsToken
+        address stakingRewards;
         uint256 rewardAmount;
         uint256 duration;
     }
