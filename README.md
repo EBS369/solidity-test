@@ -2,7 +2,7 @@
 The repairing of [a broken Solidity smart contract project](https://github.com/EBS369/solidity-test/commit/636d68088199400193bf53757a2bbeefeb62febd)
 
 ## Status
-In the middle of a rewrite.
+In the middle of a rewrite
 
 ## Live (AVAX Fuji Testnet)
 
@@ -36,6 +36,7 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 16. Should deploy multiple StakingRewards instances in one factory deploy() call
 17. Delete expired mapping entries for gas refund
 18. Consider building an LP alike token as receipt of deposit / staking
+19. Minimal deposit amount (e.g. 1e16 for 0.01 of an 18 decimal token)
 
 ## Critical
 
