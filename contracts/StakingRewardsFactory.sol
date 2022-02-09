@@ -2,12 +2,13 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 import "./StakingRewards.sol";
 
-contract StakingRewardsFactory is Ownable {
+contract StakingRewardsFactory is Ownable, Pausable {
     using SafeERC20 for IERC20;
     using SafeMath for uint256;
 
@@ -123,7 +124,7 @@ contract StakingRewardsFactory is Ownable {
     }
 
     /* ========== MODIFIERS ========== */
-    function notifyRewardAmounts() public {
+    function notifyRewardAmounts() public whenNotPaused {
         require(
             stakingTokens.length > 0,
             "StakingRewardsFactory::notifyRewardAmounts: called before any deploys"
@@ -133,7 +134,7 @@ contract StakingRewardsFactory is Ownable {
         }
     }
 
-    function notifyRewardAmount(address _stakingToken) public {
+    function notifyRewardAmount(address _stakingToken) public whenNotPaused {
         require(
             block.timestamp >= stakingRewardsGenesis,
             "StakingRewardsFactory::notifyRewardAmount: too soon"
