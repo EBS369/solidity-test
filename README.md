@@ -31,7 +31,7 @@ https://testnet.snowtrace.io/address/0xd11ee576a8c4c5a27cc833cae4fb5030f27f3673
 11. Pause contract (Complete pause or withdraw pause?)
 12. Do not modify contract state inside modifier
 13. Intentionally revert if stake already exists (stakeTransferWithBalance), to prevent timelock reset attacks
-14. Make RewardsDistributionRecipient Ownable, add setRewardsDistribution (Remove StakingRewards's Ownable)
+14. C3 linearization: Ownable RewardsDistributionRecipient, not Ownable StakingRewards, StakingRewards inherits RewardsDistributionRecipient
 
 ## Critical
 
