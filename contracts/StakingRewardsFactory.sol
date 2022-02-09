@@ -32,7 +32,7 @@ contract StakingRewardsFactory is Ownable {
             _stakingRewardsGenesis >= block.timestamp,
             "StakingRewardsFactory::constructor: genesis too soon"
         );
-
+        // e.g. $NEW / $AVAX-$NEW LP
         rewardsToken = _rewardsToken;
         stakingRewardsGenesis = _stakingRewardsGenesis;
     }
